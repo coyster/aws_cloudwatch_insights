@@ -26,14 +26,14 @@ def query_params() -> dict:
     return query_params
 
 
-def send_insight(client: boto3.Session.client):
+def send_insight(client):
     params = query_params()
     print(params)
     resp = client.start_query(**params)
     return resp
 
 
-def get_insight_data(client: boto3.Session.client, query_id_dict: dict):
+def get_insight_data(client, query_id_dict: dict):
     resp = client.get_query_results(queryId=query_id_dict["queryId"])
 
     print(f"\n{resp}\n")
